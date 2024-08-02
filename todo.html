@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/public/CSS/todo.css">
+</head>
+
+<body>
+    <div class="w-full min-h-screen bg-gradient-to-b from-red-400 to-yellow-400 flex justify-center">
+        <div id="container" class="bg-white absolute top-12 h-4/5 mx-auto w-3/5 rounded-3xl">
+            <nav class="text-xl flex px-4 justify-center py-4 gap-4 ">
+                <div class="w-full ">
+                    <input type="text" id="Input" placeholder="Enter your text here..."
+                        class="w-full shadow-md shadow-sky-500 border border-gray-700 rounded-full  px-6 py-2 outline-none transition transform hover:translate-x-0.5 duration-300">
+                </div>
+                <div>
+                    <button id="button"
+                        class="bg-blue-600 text-white font-semibold px-4 py-2 rounded-full  transition trasform hover:bg-black hover:text-white duration-200">
+                        Add</button>
+                </div>
+            </nav>
+
+            <section class="py-2 text-lg pl-7 bg-stone-100">
+                <div class="">
+                    <ul class="list-disc" id="List"></ul>
+                    <ul id="task-list" class="list-disc pl-5"></ul>
+                </div>
+            </section>
+
+        </div>
+    </div>
+    <script>
+        const button = document.getElementById("button");
+        const myList = document.getElementById("List");
+        const myInput = document.getElementById("Input");
+
+        myInput.addEventListener('keypress', (event)=>{
+            if(event.key ==='Enter'){
+                const task = myInput.value.trim();
+                if(task){
+                    const el = document.createElement('li');
+                    el.textContent= task;
+                    myList.appendChild(el);
+                    myInput.value="";
+                }
+            }
+        })
+        button.addEventListener('click', () => {
+            const task = myInput.value.trim();
+            if (task) {
+                const item = document.createElement('li');
+                item.textContent = task;
+                myList.appendChild(item);
+                myInput.value = "";
+            }
+        });
+
+    </script>
+</body>
+
+</html>
